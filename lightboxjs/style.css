@@ -1,0 +1,123 @@
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    font-size: 16px;
+    background: #ffffff;
+}
+
+.content{
+    width: 100%;
+    /* height: auto; */
+    padding: 20px;
+    display:  grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 300px 300px;
+    grid-template-areas: 
+    "h1 h2 h3"
+    "h4 h5 h6";
+    gap: 20px;
+
+}
+
+.item {
+    margin-right: 10px;
+    width: 3    0%;
+    background: #dedede;
+    border-radius: 8px;
+}
+
+.imgitem{
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    object-fit: cover;
+    height: 200px;
+    
+    border-top-right-radius: 18px;
+    border-top-left-radius: 18px;
+}
+
+.inforitem{
+    padding: 10px;
+
+}
+
+.item:first-child{
+    grid-area: h1;
+}
+
+.item:nth-child(2){
+    grid-area: h2;
+}
+.item:nth-child(3){
+    grid-area: h3;
+}
+.item:nth-child(4){
+    grid-area: h4;
+}
+.item:nth-child(5){
+    grid-area: h5;
+}
+
+.lightbox {
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lightbox .img {
+    height: 80%;
+    width: 90%;
+    object-fit: cover;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    padding: 50px;
+
+}
+
+
+.lightbox-content {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.lightbox-content i {
+    font-size: 60px;
+    color: white;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+
+/* .lightbox .lightbox-close{
+    font-size: 60px;
+    color: white;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+} */
+

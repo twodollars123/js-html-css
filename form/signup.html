@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+                
+
+        :root {
+            --success-color: #2691d9;
+            --error-color: #e74c3c;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            font-family: arial, sans-serif;
+            background: linear-gradient(120deg, rgb(1,119,255), rgb(245, 131, 194));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container{
+            width: 400px;
+            border-radius: 10px;
+            background: white;
+            padding: 40px;
+            border: none;
+            outline: none;
+        }
+
+        .logo {
+            margin: 0 auto;
+            width: 80px;
+        }
+
+        .logo img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form_control {
+            width: 100%;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .form_control input {
+            width: 100%;
+            height: 40px;
+            font-size: 16px;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid #adadad;
+        }
+
+        .form_control span {
+            position: absolute;
+            border-bottom: 3px solid var(--success-color);
+            left: 0;
+            top: 38px;
+            width: 0%;
+            transition: 0.3s;
+        }
+
+        .form_control input:focus ~ span {
+            width: 100%;
+        }
+
+        .form_control.error small{
+            color: var(--error-color);
+        }
+
+        .form_control.error input{
+            border-bottom: 2px solid var(--error-color);
+        }
+
+        .btn_submit{
+            width: 100%;
+            height: 50px;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            background: var(--success-color);
+            border-radius: 25px;
+            margin: 25px 0;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        .btn_submit:hover{
+            background: #2601d9;
+        }
+
+        .signup_link {
+            text-align: right;
+        }
+
+        .signup_link a{
+            color: var(--success-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .signup_link a:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <div class="logo">
+                <img src="./img/logo_haui.jpg" alt="">
+            </div>
+            <h2>Trường đại học công nghiệp Hà Nội</h2>
+            <h2>Đăng kí</h2>
+            <div class="form_control">
+                <input id="email" type="email" placeholder="Email">
+                <small></small>
+                <span></span>
+            </div>
+
+            <div class="form_control">
+                <input id="usernumber" type="text" placeholder="Mã sinh viên">
+                <small></small>
+                <span></span>
+            </div>
+
+            <div class="form_control">
+                <input id="username" type="text" placeholder="Tên đăng nhập">
+                <small></small>
+                <span></span>
+            </div>
+
+            <div class="form_control">
+                <input id="password" type="password" placeholder="Mật khẩu">
+                <small></small>
+                <span></span>
+            </div>
+
+            <button type="submit" class="btn_submit">Đăng kí</button>
+
+            <div class="signup_link">
+                <a href="./login.html">Đăng nhập</a>
+            </div>
+        </form>
+    </div>
+</body>
+<!-- <script src="main.js"></script> -->
+
+<script>
+    
+
+    var email = document.querySelector('#email')
+    var usernumber = document.querySelector('#usernumber')
+    var username = document.querySelector('#username')
+    var password = document.querySelector('#password')
+    var form = document.querySelector('form')
+
+    function showError(input, message) {
+        let parent = input.parentElement;
+        let small = parent.querySelector('small')
+        parent.classList.add('error')
+        small.innerText = message
+    }
+
+
+    function showSuccess(input) {
+        let parent = input.parentElement;
+        let small = parent.querySelector('small')
+        parent.classList.remove('error')
+        small.innerText = ''
+    }
+
+    function checkEmptyError (listInput) { 
+        let isEmptyError = false;
+        listInput.forEach(input => { 
+            input.value=input.value.trim() 
+            
+            if(!input.value){ 
+                isEmptyError = true;
+                showError(input, 'Không được để trống') 
+            }
+            else{
+                showSuccess (input) 
+            }
+        });
+
+        return isEmptyError
+    }
+
+    form.addEventListener('submit', function(e) { 
+        e.preventDefault()
+        let isEmptyError = checkEmptyError([email, usernumber, username, password]) 
+    })
+</script>
+</html>
